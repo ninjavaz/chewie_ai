@@ -1,4 +1,5 @@
 import { ChewieChat, type ChewieEvent } from '@chewieai/chat-widget';
+import '@chewieai/chat-widget/styles.css';
 
 function App() {
   return (

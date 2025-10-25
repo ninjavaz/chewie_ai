@@ -13,7 +13,8 @@
       "require": "./dist/index.cjs",
       "types": "./dist/index.d.ts"
     },
-    "./styles.css": "./dist/styles.css",
+    "./dist/index.css": "./dist/index.css",
+    "./styles.css": "./dist/index.css",
     "./vanilla": {
       "import": "./dist/vanilla.js",
       "require": "./dist/vanilla.cjs"
