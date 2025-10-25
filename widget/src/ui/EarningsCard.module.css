@@ -1,0 +1,92 @@
+.card {
+  background: var(--chewie-gradient-accent);
+  border-radius: var(--chewie-radius-lg);
+  padding: 16px;
+  margin: 12px 0;
+  box-shadow: var(--chewie-shadow-glow-accent);
+  border: 1px solid var(--chewie-color-border-accent);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.icon {
+  font-size: 20px;
+}
+
+.title {
+  font-family: var(--chewie-font-heading);
+  font-size: var(--chewie-font-size-base);
+  font-weight: 600;
+  color: var(--chewie-color-text-primary);
+}
+
+.main {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+  font-size: var(--chewie-font-size-lg);
+}
+
+.amount {
+  font-family: var(--chewie-font-heading);
+  font-weight: 600;
+  color: var(--chewie-color-text-primary);
+}
+
+.arrow {
+  color: var(--chewie-color-secondary);
+  font-weight: bold;
+}
+
+.result {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.earnings {
+  font-family: var(--chewie-font-heading);
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: var(--chewie-color-secondary);
+}
+
+.period {
+  font-size: var(--chewie-font-size-sm);
+  color: var(--chewie-color-text-secondary);
+}
+
+.details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 12px;
+  border-top: 1px solid var(--chewie-color-border-subtle);
+}
+
+.detail {
+  display: flex;
+  gap: 6px;
+  font-size: var(--chewie-font-size-sm);
+}
+
+.label {
+  color: var(--chewie-color-text-secondary);
+}
+
+.value {
+  font-weight: 600;
+  color: var(--chewie-color-text-primary);
+}
+
+.updated {
+  font-size: 0.75rem;
+  color: var(--chewie-color-text-secondary);
+  font-style: italic;
+}

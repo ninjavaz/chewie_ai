@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chewie Chat Widget - Vanilla JS Example</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #052346 0%, #0D2853 100%);
+            color: #FFFFFF;
+            min-height: 100vh;
+        }
+
+        .header {
+            background: rgba(13, 40, 83, 0.5);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 24px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2rem;
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            color: #BAD3E5;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 48px auto;
+            padding: 0 24px;
+        }
+
+        .card {
+            background: rgba(13, 40, 83, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 32px;
+        }
+
+        .card h2 {
+            font-family: 'Poppins', sans-serif;
+            color: #F5C751;
+            margin-bottom: 16px;
+        }
+
+        .card p {
+            color: #BAD3E5;
+            line-height: 1.6;
+            margin-bottom: 12px;
+        }
+
+        .code-block {
+            background: rgba(5, 35, 70, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 16px 0;
+            overflow-x: auto;
+        }
+
+        .code-block pre {
+            color: #BAD3E5;
+            font-family: 'Monaco', 'Courier New', monospace;
+            font-size: 0.875rem;
+            white-space: pre-wrap;
+        }
+
+        .highlight {
+            color: #F5C751;
+            font-weight: 600;
+        }
+
+        .method-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .method-list li {
+            padding: 8px 0 8px 24px;
+            position: relative;
+            color: #FFFFFF;
+        }
+
+        .method-list li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: #2DBE78;
+            font-weight: bold;
+        }
+
+        .method-list code {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.875rem;
+        }
+
+        .badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #2DBE78 0%, #225395 100%);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.5rem;
+            }
+
+            .card {
+                padding: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>🚀 Chewie Chat Widget</h1>
+        <p>Vanilla JavaScript Integration Example</p>
+    </header>
+
+    <div class="container">
+        <div class="card">
+            <h2>✨ Widget Active <span class="badge">Mock Mode</span></h2>
+            <p>The chat widget is running in mock mode. Click the button in the bottom-right corner to start chatting!</p>
+            <p>Try asking:</p>
+            <div class="code-block">
+                <pre>"How much can I earn on 1000 USDC?"
+"What is Kamino Finance?"
+"How does lending work?"</pre>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>📦 Installation</h2>
+            <p>Add the widget to your HTML page:</p>
+            <div class="code-block">
+                <pre><span class="highlight">&lt;!-- Via CDN --&gt;</span>
+&lt;script src="https://unpkg.com/@chewieai/chat-widget/dist/vanilla.js"&gt;&lt;/script&gt;
+
+<span class="highlight">&lt;!-- Via npm --&gt;</span>
+npm install @chewieai/chat-widget</pre>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>🎯 Usage Methods</h2>
+            
+            <h3 style="color: #BAD3E5; margin: 24px 0 12px;">Method 1: Data Attributes (Auto-init)</h3>
+            <div class="code-block">
+                <pre>&lt;div 
+  data-chewie-api-url="http://localhost:8000"
+  data-chewie-dapp="kamino"
+  data-chewie-lang="en"
+  data-chewie-theme="dark"
+  data-chewie-mock="true"
+&gt;&lt;/div&gt;</pre>
+            </div>
+
+            <h3 style="color: #BAD3E5; margin: 24px 0 12px;">Method 2: JavaScript API</h3>
+            <div class="code-block">
+                <pre>&lt;script&gt;
+  window.ChewieChat.init({
+    apiUrl: 'http://localhost:8000',
+    dapp: 'kamino',
+    lang: 'en',
+    theme: 'dark',
+    position: 'bottom-right',
+    mock: true,
+    initialPrompts: [
+      'How much can I earn on 1000 USDC?',
+      'What is Kamino?'
+    ],
+    onEvent: (event) => {
+      console.log('Chewie event:', event);
+    }
+  });
+&lt;/script&gt;</pre>
+            </div>
+
+            <h3 style="color: #BAD3E5; margin: 24px 0 12px;">Available Methods</h3>
+            <ul class="method-list">
+                <li><code>window.ChewieChat.init(options)</code> - Initialize the widget</li>
+                <li><code>window.ChewieChat.destroy()</code> - Remove the widget</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h2>⚙️ Configuration Options</h2>
+            <ul class="method-list">
+                <li><code>apiUrl</code> (required) - Backend API endpoint</li>
+                <li><code>dapp</code> (optional) - DApp identifier, default: 'kamino'</li>
+                <li><code>lang</code> (optional) - Language: 'en' | 'pl', default: 'en'</li>
+                <li><code>theme</code> (optional) - Theme: 'dark' | 'light', default: 'dark'</li>
+                <li><code>position</code> (optional) - Position: 'bottom-right' | 'bottom-left'</li>
+                <li><code>mock</code> (optional) - Enable mock mode for testing</li>
+                <li><code>initialPrompts</code> (optional) - Array of suggested prompts</li>
+                <li><code>onEvent</code> (optional) - Event callback function</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Widget initialization -->
+    <div 
+        data-chewie-api-url="http://localhost:8000"
+        data-chewie-dapp="kamino"
+        data-chewie-theme="dark"
+        data-chewie-position="bottom-right"
+        data-chewie-mock="true"
+    ></div>
+
+    <!-- Load widget script -->
+    <!-- In production, replace with: https://unpkg.com/@chewieai/chat-widget/dist/vanilla.js -->
+    <script src="../../dist/vanilla.js"></script>
+</body>
+</html>

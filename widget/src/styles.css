@@ -1,0 +1,303 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  /* Widget Container */
+  .chewie-widget {
+    @apply fixed z-[9999] font-chewie;
+  }
+
+  .chewie-widget--bottom-right {
+    @apply bottom-5 right-5;
+  }
+
+  .chewie-widget--bottom-left {
+    @apply bottom-5 left-5;
+  }
+
+  .chewie-widget--top-right {
+    @apply top-5 right-5;
+  }
+
+  .chewie-widget--top-left {
+    @apply top-5 left-5;
+  }
+
+  /* Toggle Button */
+  .chewie-widget__toggle-btn {
+    @apply w-15 h-15 rounded-full border-0 bg-chewie-primary text-white cursor-pointer flex items-center justify-center text-2xl shadow-chewie-lg transition-all duration-300 ease-in-out relative hover:bg-chewie-primary-hover hover:scale-105;
+  }
+
+  .chewie-widget__toggle-btn--open {
+    @apply bg-chewie-text-muted;
+  }
+
+  .chewie-widget__icon {
+    @apply w-8 h-8 rounded-full;
+  }
+
+  .chewie-widget__default-icon {
+    @apply text-2xl leading-none;
+  }
+
+  [data-chewie-theme="dark"] .chewie-widget__toggle-btn {
+    @apply bg-chewie-dark-primary hover:bg-chewie-dark-primary-hover shadow-chewie-dark-lg;
+  }
+
+  [data-chewie-theme="dark"] .chewie-widget__toggle-btn--open {
+    @apply bg-chewie-dark-text-muted;
+  }
+
+  /* Chat Window */
+  .chewie-chat-window {
+    @apply absolute bottom-20 right-0 w-96 h-[500px] bg-chewie-background border border-chewie-border rounded-chewie shadow-chewie-lg flex flex-col overflow-hidden animate-chewie-slide-up;
+  }
+
+  .chewie-widget--bottom-left .chewie-chat-window,
+  .chewie-widget--top-left .chewie-chat-window {
+    @apply right-auto left-0;
+  }
+
+  .chewie-widget--top-right .chewie-chat-window,
+  .chewie-widget--top-left .chewie-chat-window {
+    @apply bottom-auto top-20;
+  }
+
+  [data-chewie-theme="dark"] .chewie-chat-window {
+    @apply bg-chewie-dark-background border-chewie-dark-border shadow-chewie-dark-lg;
+  }
+
+  /* Chat Header */
+  .chewie-chat-window__header {
+    @apply px-5 py-4 bg-chewie-surface border-b border-chewie-border flex items-center justify-between;
+  }
+
+  .chewie-chat-window__title {
+    @apply flex items-center gap-3 font-semibold text-chewie-text text-base;
+  }
+
+  .chewie-chat-window__avatar {
+    @apply text-xl;
+  }
+
+  .chewie-chat-window__close-btn {
+    @apply bg-transparent border-0 text-chewie-text-muted cursor-pointer p-1 rounded-chewie-sm transition-all duration-200 ease-in-out hover:bg-chewie-border hover:text-chewie-text;
+  }
+
+  [data-chewie-theme="dark"] .chewie-chat-window__header {
+    @apply bg-chewie-dark-surface border-chewie-dark-border;
+  }
+
+  [data-chewie-theme="dark"] .chewie-chat-window__title {
+    @apply text-chewie-dark-text;
+  }
+
+  [data-chewie-theme="dark"] .chewie-chat-window__close-btn {
+    @apply text-chewie-dark-text-muted hover:bg-chewie-dark-border hover:text-chewie-dark-text;
+  }
+
+  /* Messages Area */
+  .chewie-chat-window__messages {
+    @apply flex-1 overflow-y-auto p-4 flex flex-col gap-4;
+  }
+
+  .chewie-chat-window__messages::-webkit-scrollbar {
+    @apply w-1.5;
+  }
+
+  .chewie-chat-window__messages::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+
+  .chewie-chat-window__messages::-webkit-scrollbar-thumb {
+    @apply bg-chewie-border rounded-sm;
+  }
+
+  .chewie-chat-window__messages::-webkit-scrollbar-thumb:hover {
+    @apply bg-chewie-text-muted;
+  }
+
+  [data-chewie-theme="dark"] .chewie-chat-window__messages::-webkit-scrollbar-thumb {
+    @apply bg-chewie-dark-border;
+  }
+
+  [data-chewie-theme="dark"] .chewie-chat-window__messages::-webkit-scrollbar-thumb:hover {
+    @apply bg-chewie-dark-text-muted;
+  }
+
+  /* Welcome Message */
+  .chewie-chat-window__welcome {
+    @apply flex gap-3 items-start;
+  }
+
+  .chewie-chat-window__welcome-avatar {
+    @apply text-xl flex-shrink-0;
+  }
+
+  .chewie-chat-window__welcome-text {
+    @apply bg-chewie-surface px-4 py-3 rounded-chewie text-chewie-text leading-relaxed;
+  }
+
+  [data-chewie-theme="dark"] .chewie-chat-window__welcome-text {
+    @apply bg-chewie-dark-surface text-chewie-dark-text;
+  }
+
+  /* Chat Messages */
+  .chewie-message {
+    @apply flex flex-col gap-2;
+  }
+
+  .chewie-message--user {
+    @apply items-end;
+  }
+
+  .chewie-message--assistant {
+    @apply items-start;
+  }
+
+  .chewie-message__content {
+    @apply max-w-[85%] flex flex-col gap-2;
+  }
+
+  .chewie-message__text {
+    @apply px-4 py-3 rounded-chewie leading-relaxed break-words;
+  }
+
+  .chewie-message--user .chewie-message__text {
+    @apply bg-chewie-primary text-white;
+  }
+
+  .chewie-message--assistant .chewie-message__text {
+    @apply bg-chewie-surface text-chewie-text;
+  }
+
+  .chewie-message__sources {
+    @apply px-3 py-2 bg-chewie-border rounded-chewie-sm text-xs;
+  }
+
+  .chewie-message__sources-title {
+    @apply font-semibold text-chewie-text mb-1;
+  }
+
+  .chewie-message__source-link {
+    @apply block text-chewie-primary no-underline mb-0.5 break-all hover:underline;
+  }
+
+  .chewie-message__meta {
+    @apply flex items-center gap-2 text-xs text-chewie-text-muted;
+  }
+
+  .chewie-message--user .chewie-message__meta {
+    @apply justify-end;
+  }
+
+  .chewie-message__feedback {
+    @apply flex gap-1;
+  }
+
+  .chewie-message__feedback-btn {
+    @apply bg-transparent border-0 cursor-pointer px-1 py-0.5 rounded text-xs transition-colors duration-200 hover:bg-chewie-border;
+  }
+
+  /* Dark theme variants */
+  [data-chewie-theme="dark"] .chewie-message--user .chewie-message__text {
+    @apply bg-chewie-dark-primary;
+  }
+
+  [data-chewie-theme="dark"] .chewie-message--assistant .chewie-message__text {
+    @apply bg-chewie-dark-surface text-chewie-dark-text;
+  }
+
+  [data-chewie-theme="dark"] .chewie-message__sources {
+    @apply bg-chewie-dark-border;
+  }
+
+  [data-chewie-theme="dark"] .chewie-message__sources-title {
+    @apply text-chewie-dark-text;
+  }
+
+  [data-chewie-theme="dark"] .chewie-message__source-link {
+    @apply text-chewie-dark-primary;
+  }
+
+  [data-chewie-theme="dark"] .chewie-message__meta {
+    @apply text-chewie-dark-text-muted;
+  }
+
+  [data-chewie-theme="dark"] .chewie-message__feedback-btn:hover {
+    @apply bg-chewie-dark-border;
+  }
+
+  /* Loading Animation */
+  .chewie-message__loading {
+    @apply px-4 py-3;
+  }
+
+  .chewie-loading-dots {
+    @apply flex gap-1 items-center;
+  }
+
+  .chewie-loading-dot {
+    @apply w-1.5 h-1.5 rounded-full bg-chewie-text-muted animate-chewie-loading-bounce;
+  }
+
+  .chewie-loading-dot:nth-child(1) { 
+    animation-delay: -0.32s; 
+  }
+  
+  .chewie-loading-dot:nth-child(2) { 
+    animation-delay: -0.16s; 
+  }
+
+  [data-chewie-theme="dark"] .chewie-loading-dot {
+    @apply bg-chewie-dark-text-muted;
+  }
+
+  /* Chat Input */
+  .chewie-chat-input {
+    @apply p-4 border-t border-chewie-border bg-chewie-background;
+  }
+
+  .chewie-chat-input__container {
+    @apply flex gap-2 items-end;
+  }
+
+  .chewie-chat-input__textarea {
+    @apply flex-1 border border-chewie-border rounded-chewie-sm px-3 py-2.5 font-inherit text-sm text-chewie-text bg-chewie-background resize-none outline-none transition-colors duration-200 focus:border-chewie-primary placeholder:text-chewie-text-muted;
+  }
+
+  .chewie-chat-input__send-btn {
+    @apply bg-chewie-primary text-white border-0 rounded-chewie-sm p-2.5 cursor-pointer flex items-center justify-center transition-all duration-200 flex-shrink-0 hover:bg-chewie-primary-hover disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  /* Dark theme variants */
+  [data-chewie-theme="dark"] .chewie-chat-input {
+    @apply border-chewie-dark-border bg-chewie-dark-background;
+  }
+
+  [data-chewie-theme="dark"] .chewie-chat-input__textarea {
+    @apply border-chewie-dark-border text-chewie-dark-text bg-chewie-dark-background focus:border-chewie-dark-primary placeholder:text-chewie-dark-text-muted;
+  }
+
+  [data-chewie-theme="dark"] .chewie-chat-input__send-btn {
+    @apply bg-chewie-dark-primary hover:bg-chewie-dark-primary-hover;
+  }
+
+  /* Mobile Responsiveness */
+  @media (max-width: 480px) {
+    .chewie-chat-window {
+      @apply w-[calc(100vw-2.5rem)] h-[calc(100vh-8.75rem)] max-h-[600px];
+    }
+    
+    .chewie-widget--bottom-right,
+    .chewie-widget--bottom-left {
+      @apply left-5 right-5;
+    }
+    
+    .chewie-widget--bottom-right .chewie-chat-window,
+    .chewie-widget--bottom-left .chewie-chat-window {
+      @apply left-0 right-0;
+    }
+  }
+}

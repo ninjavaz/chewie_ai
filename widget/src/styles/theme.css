@@ -1,0 +1,148 @@
+/**
+ * Chewie Chat Widget Theme
+ * Based on Chewie AI brand design system
+ */
+
+:root {
+  /* ============================================
+     PRIMITIVE COLORS (Base Palette - Figma Design)
+     ============================================ */
+  --chewie-blue-900: #052346;
+  --chewie-blue-800: #0D2853;
+  --chewie-blue-700: #163C7A;
+  --chewie-blue-600: #225395;
+  --chewie-blue-500: #3172B6;
+  --chewie-blue-200: #BAD3E5;
+  --chewie-blue-50: #EBEFF2;
+
+  --chewie-yellow-600: #E8A640;
+  --chewie-yellow-500: #F5C751;
+  --chewie-yellow-400: #F8D555;
+
+  --chewie-green-success: #2DBE78;
+  --chewie-red-error: #E5484D;
+  --chewie-orange-warning: #FF914D;
+
+  --chewie-neutral-900: #052346;
+  --chewie-neutral-800: #0D2853;
+  --chewie-neutral-200: #BAD3E5;
+  --chewie-neutral-50: #EBEFF2;
+  --chewie-neutral-white: #FFFFFF;
+
+  /* ============================================
+     SEMANTIC COLORS
+     ============================================ */
+  --chewie-color-primary: var(--chewie-blue-600);
+  --chewie-color-primary-dark: var(--chewie-blue-700);
+  --chewie-color-primary-light: var(--chewie-blue-500);
+
+  --chewie-color-secondary: var(--chewie-yellow-500);
+  --chewie-color-secondary-dark: var(--chewie-yellow-600);
+  --chewie-color-secondary-light: var(--chewie-yellow-400);
+
+  --chewie-color-accent: var(--chewie-green-success);
+  --chewie-color-accent-dark: var(--chewie-blue-800);
+  --chewie-color-accent-light: var(--chewie-green-success);
+
+  --chewie-color-background: var(--chewie-blue-900);
+  --chewie-color-surface: var(--chewie-blue-800);
+  --chewie-color-surface-elevated: rgba(255, 255, 255, 0.03);
+  --chewie-color-surface-hover: rgba(255, 255, 255, 0.08);
+
+  --chewie-color-text-primary: var(--chewie-neutral-white);
+  --chewie-color-text-secondary: var(--chewie-neutral-200);
+  --chewie-color-text-inverse: var(--chewie-blue-900);
+
+  --chewie-color-border-subtle: rgba(255, 255, 255, 0.1);
+  --chewie-color-border-primary: rgba(34, 83, 149, 0.3);
+  --chewie-color-border-secondary: rgba(245, 199, 81, 0.3);
+  --chewie-color-border-accent: rgba(45, 190, 120, 0.3);
+
+  --chewie-color-success: var(--chewie-green-success);
+  --chewie-color-error: var(--chewie-red-error);
+  --chewie-color-warning: var(--chewie-orange-warning);
+  --chewie-color-hover: rgba(255, 255, 255, 0.08);
+
+  /* ============================================
+     SHADOWS
+     ============================================ */
+  --chewie-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.05);
+  --chewie-shadow-md: 0 4px 12px rgba(34, 83, 149, 0.3);
+  --chewie-shadow-lg: 0 8px 24px rgba(34, 83, 149, 0.4);
+  --chewie-shadow-xl: 0 12px 32px rgba(34, 83, 149, 0.5);
+  --chewie-shadow-2xl: 0 40px 80px rgba(0, 0, 0, 0.4);
+  --chewie-shadow-secondary: 0 8px 24px rgba(245, 199, 81, 0.4);
+  --chewie-shadow-secondary-hover: 0 12px 32px rgba(245, 199, 81, 0.5);
+  --chewie-shadow-glow-primary: 0 4px 20px rgba(245, 199, 81, 0.5);
+  --chewie-shadow-glow-accent: 0 0 8px rgba(45, 190, 120, 0.6);
+
+  /* ============================================
+     GRADIENTS
+     ============================================ */
+  --chewie-gradient-primary: linear-gradient(135deg, var(--chewie-color-primary) 0%, var(--chewie-color-primary-dark) 100%);
+  --chewie-gradient-secondary: linear-gradient(135deg, var(--chewie-color-secondary) 0%, var(--chewie-color-secondary-dark) 100%);
+  --chewie-gradient-accent: linear-gradient(135deg, var(--chewie-color-accent) 0%, var(--chewie-color-accent-dark) 100%);
+  --chewie-gradient-text: linear-gradient(135deg, var(--chewie-color-text-primary) 0%, var(--chewie-color-text-secondary) 100%);
+  --chewie-gradient-highlight: linear-gradient(135deg, var(--chewie-color-accent) 0%, var(--chewie-color-accent-light) 100%);
+  --chewie-gradient-hero-orb: radial-gradient(circle, rgba(45, 190, 120, 0.15), transparent);
+
+  /* ============================================
+     SPACING
+     ============================================ */
+  --chewie-space-container: 32px;
+  --chewie-space-section: 120px;
+  --chewie-space-card: 40px;
+
+  /* ============================================
+     BORDER RADIUS
+     ============================================ */
+  --chewie-radius-sm: 10px;
+  --chewie-radius-md: 12px;
+  --chewie-radius-lg: 20px;
+  --chewie-radius-xl: 24px;
+  --chewie-radius-2xl: 32px;
+  --chewie-radius-full: 50%;
+
+  /* ============================================
+     TYPOGRAPHY
+     ============================================ */
+  --chewie-font-heading: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --chewie-font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  
+  /* Widget specific */
+  --chewie-font-size-sm: 0.875rem;
+  --chewie-font-size-base: 1rem;
+  --chewie-font-size-lg: 1.125rem;
+  --chewie-line-height-tight: 1.4;
+  --chewie-line-height-normal: 1.6;
+}
+
+/* ============================================
+   LIGHT THEME OVERRIDES
+   ============================================ */
+[data-chewie-theme='light'] {
+  --chewie-color-background: var(--chewie-neutral-white);
+  --chewie-color-surface: var(--chewie-neutral-50);
+  --chewie-color-surface-elevated: rgba(34, 83, 149, 0.03);
+  --chewie-color-surface-hover: rgba(34, 83, 149, 0.08);
+
+  --chewie-color-text-primary: var(--chewie-blue-900);
+  --chewie-color-text-secondary: var(--chewie-blue-700);
+  --chewie-color-text-inverse: var(--chewie-neutral-white);
+
+  --chewie-color-border-subtle: rgba(5, 35, 70, 0.1);
+  --chewie-shadow-md: 0 4px 12px rgba(5, 35, 70, 0.1);
+  --chewie-shadow-lg: 0 8px 24px rgba(5, 35, 70, 0.15);
+  --chewie-shadow-xl: 0 12px 32px rgba(5, 35, 70, 0.2);
+}
+
+/* ============================================
+   REDUCED MOTION
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
