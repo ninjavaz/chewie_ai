@@ -1,4 +1,4 @@
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, vi } from 'vitest';
 import { render } from '@testing-library/react';
 import { axe, toHaveNoViolations } from 'jest-axe';
 import { ChewieChat } from '../src/ui/ChewieChat';
@@ -36,8 +36,8 @@ describe('Accessibility', () => {
     );
 
     const button = getByRole('button');
-    expect(button).toHaveAttribute('aria-label', 'Open Chewie Chat');
-    expect(button).toHaveAttribute('aria-expanded', 'false');
+    expect(button.getAttribute('aria-label')).toBe('Open Chewie Chat');
+    expect(button.getAttribute('aria-expanded')).toBe('false');
   });
 
   it('Modal should have no a11y violations when open', async () => {
@@ -59,8 +59,8 @@ describe('Accessibility', () => {
     );
 
     const dialog = getByRole('dialog');
-    expect(dialog).toHaveAttribute('aria-modal', 'true');
-    expect(dialog).toHaveAttribute('aria-labelledby', 'chewie-chat-title');
+    expect(dialog.getAttribute('aria-modal')).toBe('true');
+    expect(dialog.getAttribute('aria-labelledby')).toBe('chewie-chat-title');
   });
 
   it('Modal close button should be keyboard accessible', () => {

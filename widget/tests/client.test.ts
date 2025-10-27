@@ -135,8 +135,12 @@ describe('ChewieClient', () => {
     it('should handle request timeout', async () => {
       fetchMock.mockImplementationOnce(
         () =>
-          new Promise((resolve) => {
-            setTimeout(() => resolve({ ok: true, json: async () => ({}) }), 5000);
+          new Promise((_, reject) => {
+            setTimeout(() => {
+              const error = new Error('The operation was aborted');
+              error.name = 'AbortError';
+              reject(error);
+            }, 100);
           })
       );
 
@@ -144,14 +148,18 @@ describe('ChewieClient', () => {
         apiUrl: 'http://localhost:8000',
       });
 
-      await expect(client.ask('Test query', { timeout: 100 })).rejects.toThrow();
+      await expect(client.ask('Test query', { timeout: 50 })).rejects.toThrow('Request was cancelled');
     });
 
     it('should respect abort signal', async () => {
       fetchMock.mockImplementationOnce(
         () =>
-          new Promise((resolve) => {
-            setTimeout(() => resolve({ ok: true, json: async () => ({}) }), 1000);
+          new Promise((_, reject) => {
+            setTimeout(() => {
+              const error = new Error('The operation was aborted');
+              error.name = 'AbortError';
+              reject(error);
+            }, 100);
           })
       );
 
@@ -164,7 +172,7 @@ describe('ChewieClient', () => {
 
       setTimeout(() => controller.abort(), 50);
 
-      await expect(promise).rejects.toThrow();
+      await expect(promise).rejects.toThrow('Request was cancelled');
     });
   });
 
