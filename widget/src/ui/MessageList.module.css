@@ -1,7 +1,7 @@
 .container {
   flex: 1;
   overflow-y: auto;
-  padding: 16px;
+  padding: var(--chewie-space-container, 16px);
   background: var(--chewie-color-background);
 }
 
@@ -15,7 +15,7 @@
   display: flex;
   flex-direction: column;
   gap: 4px;
-  animation: slideIn 0.3s ease-out;
+  animation: slideIn var(--chewie-animation-duration, 0.3s) ease-out;
 }
 
 @keyframes slideIn {
@@ -136,7 +136,7 @@
 }
 
 .timestamp {
-  font-size: 0.75rem;
+  font-size: var(--chewie-font-size-xs, 0.75rem);
   color: var(--chewie-color-text-secondary);
   opacity: 0.7;
   padding: 0 4px;

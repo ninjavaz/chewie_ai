@@ -15,7 +15,7 @@
 }
 
 .icon {
-  font-size: 20px;
+  font-size: var(--chewie-icon-size, 20px);
 }
 
 .title {
@@ -53,7 +53,7 @@
 .earnings {
   font-family: var(--chewie-font-heading);
   font-weight: 700;
-  font-size: 1.25rem;
+  font-size: var(--chewie-font-size-xl, 1.25rem);
   color: var(--chewie-color-secondary);
 }
 
@@ -86,7 +86,7 @@
 }
 
 .updated {
-  font-size: 0.75rem;
+  font-size: var(--chewie-font-size-xs, 0.75rem);
   color: var(--chewie-color-text-secondary);
   font-style: italic;
 }

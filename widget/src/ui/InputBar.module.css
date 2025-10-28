@@ -1,5 +1,5 @@
 .container {
-  padding: 16px;
+  padding: var(--chewie-space-container, 16px);
   background: var(--chewie-color-surface);
   border-top: 1px solid var(--chewie-color-border-subtle);
 }
@@ -12,7 +12,7 @@
   border: 1px solid var(--chewie-color-border-primary);
   border-radius: var(--chewie-radius-md);
   padding: 8px 12px;
-  transition: border-color 0.2s;
+  transition: border-color 0.2s ease;
 }
 
 .inputWrapper:focus-within {
@@ -81,7 +81,7 @@
 
 .hint {
   margin-top: 8px;
-  font-size: 0.75rem;
+  font-size: var(--chewie-font-size-sm, 0.875rem);
   color: var(--chewie-color-text-secondary);
   opacity: 0.7;
   text-align: center;

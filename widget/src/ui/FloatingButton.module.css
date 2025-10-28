@@ -1,15 +1,15 @@
 .button {
   position: fixed;
-  bottom: 24px;
-  width: 60px;
-  height: 60px;
+  bottom: var(--chewie-button-bottom, 24px);
+  width: var(--chewie-button-size, 60px);
+  height: var(--chewie-button-size, 60px);
   border-radius: var(--chewie-radius-full);
   border: none;
   background: var(--chewie-gradient-secondary);
   color: var(--chewie-color-text-inverse);
   cursor: pointer;
   box-shadow: var(--chewie-shadow-secondary);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all var(--chewie-animation-duration, 0.3s) cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -37,11 +37,11 @@
 }
 
 .button.bottom-right {
-  right: 24px;
+  right: var(--chewie-button-right, 24px);
 }
 
 .button.bottom-left {
-  left: 24px;
+  left: var(--chewie-button-left, 24px);
 }
 
 @media (max-width: 768px) {

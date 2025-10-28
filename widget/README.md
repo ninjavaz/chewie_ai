@@ -211,10 +211,31 @@ Widget ships with Chewie AI branded dark theme. Override CSS variables to custom
 
 ```css
 :root {
-  --chewie-color-primary: #225395;
-  --chewie-color-secondary: #F5C751;
-  --chewie-color-accent: #2DBE78;
-  --chewie-radius-lg: 20px;
+  /* Typography */
+  --chewie-font-heading;
+  --chewie-font-body;
+  --chewie-font-size-xs;
+  --chewie-font-size-sm;
+  --chewie-font-size-base;
+  --chewie-font-size-lg;
+  --chewie-font-size-xl;
+  --chewie-line-height-tight;
+  --chewie-line-height-normal;
+
+  /* Widget Dimensions */
+  --chewie-modal-width;
+  --chewie-modal-height;
+  --chewie-modal-bottom;
+  --chewie-modal-spacing;
+  --chewie-button-size;
+  --chewie-button-bottom;
+  --chewie-button-right;
+  --chewie-button-left;
+  --chewie-header-padding;
+  --chewie-icon-size;
+
+  /* Animations */
+  --chewie-animation-duration;
 }
 ```
 

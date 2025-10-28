@@ -1,8 +1,8 @@
 .modal {
   position: fixed;
-  bottom: 100px;
-  width: 400px;
-  height: 600px;
+  bottom: var(--chewie-modal-bottom, 100px);
+  width: var(--chewie-modal-width, 400px);
+  height: var(--chewie-modal-height, 600px);
   background: var(--chewie-color-surface);
   border-radius: var(--chewie-radius-xl);
   box-shadow: var(--chewie-shadow-2xl);
@@ -11,7 +11,7 @@
   z-index: 999998;
   overflow: hidden;
   border: 1px solid var(--chewie-color-border-subtle);
-  animation: modalSlideIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: modalSlideIn var(--chewie-animation-duration, 0.3s) cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 @keyframes modalSlideIn {
@@ -26,16 +26,16 @@
 }
 
 .modal.bottom-right {
-  right: 24px;
+  right: var(--chewie-modal-spacing, 24px);
 }
 
 .modal.bottom-left {
-  left: 24px;
+  left: var(--chewie-modal-spacing, 24px);
 }
 
 .header {
   background: var(--chewie-gradient-primary);
-  padding: 16px 20px;
+  padding: var(--chewie-header-padding, 16px 20px);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -71,7 +71,7 @@
   display: flex;
   align-items: center;
   gap: 6px;
-  font-size: 0.75rem;
+  font-size: var(--chewie-font-size-xs, 0.75rem);
   color: var(--chewie-color-text-secondary);
 }
 

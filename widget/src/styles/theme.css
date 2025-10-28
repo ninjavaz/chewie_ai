@@ -105,16 +105,44 @@
 
   /* ============================================
      TYPOGRAPHY
-     ============================================ */
+     ============================================  /* Typography */
   --chewie-font-heading: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --chewie-font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   
-  /* Widget specific */
-  --chewie-font-size-sm: 0.875rem;
-  --chewie-font-size-base: 1rem;
-  --chewie-font-size-lg: 1.125rem;
+  /* Font Sizes */
+  --chewie-font-size-xs: 0.75rem;      /* 12px */
+  --chewie-font-size-sm: 0.875rem;     /* 14px */
+  --chewie-font-size-base: 1rem;       /* 16px */
+  --chewie-font-size-lg: 1.125rem;     /* 18px */
+  --chewie-font-size-xl: 1.25rem;      /* 20px */
   --chewie-line-height-tight: 1.4;
   --chewie-line-height-normal: 1.6;
+
+  /* ============================================
+     WIDGET DIMENSIONS
+     ============================================ */
+  /* Modal */
+  --chewie-modal-width: 400px;
+  --chewie-modal-height: 600px;
+  --chewie-modal-bottom: 100px;
+  --chewie-modal-spacing: 24px;
+  
+  /* Floating Button */
+  --chewie-button-size: 60px;
+  --chewie-button-bottom: 24px;
+  --chewie-button-right: 24px;
+  --chewie-button-left: 24px;
+  
+  /* Header */
+  --chewie-header-padding: 16px 20px;
+  
+  /* Icons */
+  --chewie-icon-size: 20px;
+
+  /* ============================================
+     ANIMATIONS
+     ============================================ */
+  --chewie-animation-duration: 0.3s;
 }
 
 /* ============================================

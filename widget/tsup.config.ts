@@ -17,10 +17,12 @@ export default defineConfig([
     loader: {
       '.css': 'local-css',
     },
-    esbuildOptions(options) {
-      options.banner = {
-        js: '"use client";',
-      };
+    esbuildOptions(options, context) {
+      if (context.format === 'esm') {
+        options.banner = {
+          js: '"use client";',
+        };
+      }
     },
   },
   // Vanilla JS builds (ESM + CJS)
