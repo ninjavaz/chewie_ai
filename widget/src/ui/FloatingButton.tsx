@@ -67,10 +67,10 @@ export const FloatingButton: React.FC<FloatingButtonProps> = ({
           <line x1="6" y1="6" x2="18" y2="18" />
         </svg>
       ) : (
-        avatarUrl.startsWith('http') || avatarUrl.startsWith('/') ? (
+        avatarUrl?.startsWith('http') || avatarUrl?.startsWith('/') ? (
           <img src={avatarUrl} alt="ChewieAI" className={styles.avatarImage} />
         ) : (
-          <span className={styles.avatarEmoji}>{avatarUrl}</span>
+          <span className={styles.avatarEmoji}>{avatarUrl || '🤖'}</span>
         )
       )}
       </button>

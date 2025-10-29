@@ -35,10 +35,10 @@ export const MessageList: React.FC<MessageListProps> = ({
           >
             {(msg.role === 'assistant' || msg.role === 'system') && (
               <div className={styles.avatar}>
-                {avatarUrl.startsWith('http') || avatarUrl.startsWith('/') ? (
+                {avatarUrl?.startsWith('http') || avatarUrl?.startsWith('/') ? (
                   <img src={avatarUrl} alt="Assistant" className={styles.avatarImage} />
                 ) : (
-                  <span>{avatarUrl}</span>
+                  <span>{avatarUrl || '🤖'}</span>
                 )}
               </div>
             )}

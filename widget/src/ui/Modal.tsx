@@ -236,10 +236,10 @@ export const Modal: React.FC<ModalProps> = ({
       <div ref={headerRef} className={styles.header}>
         <div className={styles.headerLeft}>
           <div className={styles.logoIcon}>
-            {avatarUrl.startsWith('http') || avatarUrl.startsWith('/') ? (
+            {avatarUrl?.startsWith('http') || avatarUrl?.startsWith('/') ? (
               <img src={avatarUrl} alt="ChewieAI" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
             ) : (
-              <span>{avatarUrl}</span>
+              <span>{avatarUrl || '🤖'}</span>
             )}
           </div>
           <div className={styles.headerContent}>
