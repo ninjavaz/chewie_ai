@@ -1,5 +1,5 @@
 .container {
-  padding: var(--chewie-space-container, 16px);
+  padding: var(--chewie-space-container);
   background: var(--chewie-color-surface);
   border-top: 1px solid var(--chewie-color-border-subtle);
 }
@@ -7,17 +7,17 @@
 .inputWrapper {
   display: flex;
   gap: 8px;
-  align-items: flex-end;
-  background: var(--chewie-color-surface-elevated);
-  border: 1px solid var(--chewie-color-border-primary);
-  border-radius: var(--chewie-radius-md);
-  padding: 8px 12px;
-  transition: border-color 0.2s ease;
+  align-items: center;
+  background: var(--chewie-chat-input-field-bg);
+  border: 1px solid var(--chewie-chat-input-border);
+  border-radius: var(--chewie-input-radius);
+  padding: var(--chewie-input-padding);
+  transition: all 0.2s ease;
 }
 
 .inputWrapper:focus-within {
-  border-color: var(--chewie-color-secondary);
-  box-shadow: 0 0 0 3px rgba(245, 199, 81, 0.1);
+  border-color: var(--chewie-button-primary-bg);
+  box-shadow: 0 0 0 3px rgba(59, 89, 152, 0.1);
 }
 
 .textarea {
@@ -25,10 +25,10 @@
   background: transparent;
   border: none;
   outline: none;
-  color: var(--chewie-color-text-primary);
+  color: var(--chewie-message-assistant-text);
   font-family: var(--chewie-font-body);
-  font-size: var(--chewie-font-size-base);
-  line-height: var(--chewie-line-height-normal);
+  font-size: var(--chewie-input-font-size);
+  line-height: 1.5;
   resize: none;
   min-height: 24px;
   max-height: 120px;
@@ -36,8 +36,8 @@
 }
 
 .textarea::placeholder {
-  color: var(--chewie-color-text-secondary);
-  opacity: 0.6;
+  color: var(--chewie-placeholder-text);
+  opacity: 1;
 }
 
 .textarea:disabled {
@@ -47,12 +47,12 @@
 
 .sendButton {
   flex-shrink: 0;
-  width: 36px;
-  height: 36px;
+  width: var(--chewie-action-button-size);
+  height: var(--chewie-action-button-size);
   border-radius: var(--chewie-radius-sm);
   border: none;
-  background: var(--chewie-gradient-secondary);
-  color: var(--chewie-color-text-inverse);
+  background: var(--chewie-button-primary-bg);
+  color: var(--chewie-button-primary-text);
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -75,6 +75,7 @@
 }
 
 .sendButton:focus-visible {
+  outline: 2px solid var(--chewie-button-primary-bg);
   outline: 2px solid var(--chewie-color-secondary);
   outline-offset: 2px;
 }

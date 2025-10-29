@@ -1,5 +1,7 @@
 import { ChewieChat, type ChewieEvent } from '@chewieai/chat-widget';
 import '@chewieai/chat-widget/styles.css';
+import chewieaiLogo from './chewieai-logo.png';
+
 
 function App() {
   return (
@@ -61,6 +63,7 @@ function App() {
         lang="en"
         theme="dark"
         position="bottom-right"
+        avatarUrl={chewieaiLogo}
         mock={true}
         initialPrompts={[
           'How much can I earn on 1000 USDC?',

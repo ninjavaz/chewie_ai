@@ -1,8 +1,9 @@
 .modal {
   position: fixed;
-  bottom: var(--chewie-modal-bottom, 100px);
+  bottom: var(--chewie-modal-spacing, 24px);
   width: var(--chewie-modal-width, 400px);
-  height: var(--chewie-modal-height, 600px);
+  max-height: calc(100vh - 48px);
+  height: var(--chewie-modal-height, calc(100vh - 48px));
   background: var(--chewie-color-surface);
   border-radius: var(--chewie-radius-xl);
   box-shadow: var(--chewie-shadow-2xl);
@@ -34,29 +35,39 @@
 }
 
 .header {
-  background: var(--chewie-gradient-primary);
-  padding: var(--chewie-header-padding, 16px 20px);
+  background: var(--chewie-chat-header-bg);
+  padding: var(--chewie-header-padding);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid var(--chewie-color-border-subtle);
+  border-bottom: none;
   flex-shrink: 0;
+  cursor: move;
+  user-select: none;
+}
+
+.headerLeft {
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
 .headerContent {
   display: flex;
   flex-direction: column;
-  gap: 4px;
-}
-
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 8px;
+  gap: 2px;
 }
 
 .logoIcon {
-  font-size: 24px;
+  font-size: var(--chewie-avatar-size);
+  flex-shrink: 0;
+  width: var(--chewie-avatar-size);
+  height: var(--chewie-avatar-size);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: var(--chewie-avatar-radius);
 }
 
 .title {
@@ -65,6 +76,7 @@
   font-size: 1.125rem;
   font-weight: 600;
   color: var(--chewie-color-text-primary);
+  line-height: 1.2;
 }
 
 .status {
@@ -96,12 +108,64 @@
   font-weight: 500;
 }
 
+.headerRight {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.helpButton {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--chewie-color-text-primary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.helpButton:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.helpButton:focus-visible {
+  outline: 2px solid var(--chewie-color-secondary);
+  outline-offset: 2px;
+}
+
+.maximizeButton {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--chewie-color-text-primary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.maximizeButton:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.maximizeButton:focus-visible {
+  outline: 2px solid var(--chewie-color-secondary);
+  outline-offset: 2px;
+}
+
 .closeButton {
   width: 32px;
   height: 32px;
-  border-radius: var(--chewie-radius-sm);
+  border-radius: 50%;
   border: none;
-  background: var(--chewie-color-surface-elevated);
+  background: rgba(255, 255, 255, 0.1);
   color: var(--chewie-color-text-primary);
   cursor: pointer;
   display: flex;
@@ -111,7 +175,7 @@
 }
 
 .closeButton:hover {
-  background: var(--chewie-color-surface-hover);
+  background: rgba(255, 255, 255, 0.15);
 }
 
 .closeButton:focus-visible {
@@ -124,6 +188,98 @@
   display: flex;
   flex-direction: column;
   overflow: hidden;
+}
+
+.resizeHandle {
+  position: absolute;
+  background: transparent;
+  z-index: 10;
+}
+
+.resizeHandle.top {
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 8px;
+  cursor: ns-resize;
+}
+
+.resizeHandle.right {
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 8px;
+  cursor: ew-resize;
+}
+
+.resizeHandle.bottom {
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 8px;
+  cursor: ns-resize;
+}
+
+.resizeHandle.left {
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 8px;
+  cursor: ew-resize;
+}
+
+.resizeHandle.topLeft {
+  left: 0;
+  top: 0;
+  width: 16px;
+  height: 16px;
+  cursor: nwse-resize;
+}
+
+.resizeHandle.topRight {
+  right: 0;
+  top: 0;
+  width: 16px;
+  height: 16px;
+  cursor: nesw-resize;
+}
+
+.resizeHandle.bottomLeft {
+  left: 0;
+  bottom: 0;
+  width: 16px;
+  height: 16px;
+  cursor: nesw-resize;
+}
+
+.resizeHandle.bottomRight {
+  right: 0;
+  bottom: 0;
+  width: 16px;
+  height: 16px;
+  cursor: nwse-resize;
+}
+
+.resizeHandle.bottomRight::after {
+  content: '';
+  position: absolute;
+  right: 2px;
+  bottom: 2px;
+  width: 12px;
+  height: 12px;
+  background: linear-gradient(
+    135deg,
+    transparent 0%,
+    transparent 40%,
+    var(--chewie-color-border-subtle) 40%,
+    var(--chewie-color-border-subtle) 45%,
+    transparent 45%,
+    transparent 55%,
+    var(--chewie-color-border-subtle) 55%,
+    var(--chewie-color-border-subtle) 60%,
+    transparent 60%
+  );
+  border-radius: 0 0 var(--chewie-radius-xl) 0;
 }
 
 @media (max-width: 768px) {

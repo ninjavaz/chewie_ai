@@ -26,6 +26,7 @@ export const ChewieChat: React.FC<ChewieChatProps> = (props) => {
     mock: props.mock ?? false,
     onEvent: props.onEvent,
     token: props.token,
+    avatarUrl: props.avatarUrl || '🤖',
   };
 
   const [isOpen, setIsOpen] = useState(false);
@@ -141,6 +142,7 @@ export const ChewieChat: React.FC<ChewieChatProps> = (props) => {
         onClick={isOpen ? handleClose : handleOpen}
         position={options.position || 'bottom-right'}
         ariaLabel={isOpen ? t.close : 'Open Chewie Chat'}
+        avatarUrl={options.avatarUrl}
       />
 
       {isOpen && (
@@ -149,12 +151,14 @@ export const ChewieChat: React.FC<ChewieChatProps> = (props) => {
           onClose={handleClose}
           position={options.position || 'bottom-right'}
           t={t}
+          avatarUrl={options.avatarUrl}
         >
           <MessageList
             messages={messages}
             isTyping={isSending}
             t={t}
             onFollowupClick={handleFollowupClick}
+            avatarUrl={options.avatarUrl}
           />
           <InputBar onSend={handleSend} disabled={isSending} t={t} />
         </Modal>

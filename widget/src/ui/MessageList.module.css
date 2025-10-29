@@ -1,8 +1,8 @@
 .container {
   flex: 1;
   overflow-y: auto;
-  padding: var(--chewie-space-container, 16px);
-  background: var(--chewie-color-background);
+  padding: 20px;
+  background: var(--chewie-chat-messages-bg);
 }
 
 .messages {
@@ -13,9 +13,10 @@
 
 .message {
   display: flex;
-  flex-direction: column;
-  gap: 4px;
+  flex-direction: row;
+  gap: var(--chewie-message-gap);
   animation: slideIn var(--chewie-animation-duration, 0.3s) ease-out;
+  align-items: flex-start;
 }
 
 @keyframes slideIn {
@@ -30,33 +31,56 @@
 }
 
 .message.user {
-  align-items: flex-end;
+  flex-direction: row-reverse;
 }
 
-.message.assistant {
-  align-items: flex-start;
+.message.assistant,
+.message.system {
+  flex-direction: row;
+}
+
+.avatar {
+  width: var(--chewie-avatar-size);
+  height: var(--chewie-avatar-size);
+  border-radius: var(--chewie-avatar-radius);
+  background: var(--chewie-message-avatar-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  flex-shrink: 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.avatarImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .bubble {
-  max-width: 85%;
-  padding: 12px 16px;
-  border-radius: var(--chewie-radius-md);
+  max-width: 75%;
+  padding: var(--chewie-message-padding);
+  border-radius: var(--chewie-message-radius);
   font-family: var(--chewie-font-body);
-  font-size: var(--chewie-font-size-base);
-  line-height: var(--chewie-line-height-normal);
+  font-size: var(--chewie-message-font-size);
+  line-height: 1.5;
+  color: var(--chewie-message-assistant-text);
 }
 
 .user .bubble {
-  background: var(--chewie-gradient-secondary);
-  color: var(--chewie-color-text-inverse);
-  border-bottom-right-radius: 4px;
+  background: var(--chewie-message-user-bg);
+  color: var(--chewie-message-user-text);
+  border-radius: var(--chewie-message-radius) var(--chewie-message-radius) var(--chewie-message-radius-corner) var(--chewie-message-radius);
 }
 
-.assistant .bubble {
-  background: var(--chewie-color-surface);
-  color: var(--chewie-color-text-primary);
-  border: 1px solid var(--chewie-color-border-subtle);
-  border-bottom-left-radius: 4px;
+.assistant .bubble,
+.system .bubble {
+  background: var(--chewie-message-assistant-bg);
+  color: var(--chewie-message-assistant-text);
+  border-radius: var(--chewie-message-radius) var(--chewie-message-radius) var(--chewie-message-radius) var(--chewie-message-radius-corner);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .text {
@@ -114,20 +138,23 @@
 }
 
 .followupChip {
-  padding: 6px 12px;
-  border-radius: var(--chewie-radius-full);
-  border: 1px solid var(--chewie-color-border-primary);
-  background: var(--chewie-color-surface-elevated);
-  color: var(--chewie-color-text-primary);
-  font-size: var(--chewie-font-size-sm);
+  padding: var(--chewie-followup-padding);
+  border-radius: var(--chewie-followup-radius);
+  border: none;
+  background: var(--chewie-followup-bg);
+  color: var(--chewie-followup-text);
+  font-size: var(--chewie-followup-font-size);
+  font-weight: 500;
   cursor: pointer;
   transition: all 0.2s;
   font-family: var(--chewie-font-body);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .followupChip:hover {
-  background: var(--chewie-color-surface-hover);
-  border-color: var(--chewie-color-secondary);
+  background: var(--chewie-followup-bg-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
 }
 
 .followupChip:focus-visible {
@@ -137,7 +164,7 @@
 
 .timestamp {
   font-size: var(--chewie-font-size-xs, 0.75rem);
-  color: var(--chewie-color-text-secondary);
+  color: var(--chewie-color-text-inverse);
   opacity: 0.7;
   padding: 0 4px;
 }

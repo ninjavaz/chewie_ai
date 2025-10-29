@@ -9,6 +9,8 @@
 export type ChewieOptions = {
   /** API base URL (e.g., https://api.chewieai.com or http://localhost:8000) */
   apiUrl: string;
+  /** Custom avatar URL or emoji for assistant messages */
+  avatarUrl: string;
   /** DApp identifier */
   dapp?: 'kamino' | string;
   /** Language preference */
@@ -25,6 +27,7 @@ export type ChewieOptions = {
   token?: string;
   /** Mock mode for local dev (returns canned responses) */
   mock?: boolean;
+
 };
 
 export type ChewieEvent =

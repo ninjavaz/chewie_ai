@@ -9,6 +9,7 @@ export type MessageListProps = {
   isTyping: boolean;
   t: Translations;
   onFollowupClick?: (text: string) => void;
+  avatarUrl: string;
 };
 
 export const MessageList: React.FC<MessageListProps> = ({
@@ -16,6 +17,7 @@ export const MessageList: React.FC<MessageListProps> = ({
   isTyping,
   t,
   onFollowupClick,
+  avatarUrl,
 }) => {
   const bottomRef = useRef<HTMLDivElement>(null);
 
@@ -31,6 +33,15 @@ export const MessageList: React.FC<MessageListProps> = ({
             key={msg.id}
             className={`${styles.message} ${styles[msg.role]}`}
           >
+            {(msg.role === 'assistant' || msg.role === 'system') && (
+              <div className={styles.avatar}>
+                {avatarUrl.startsWith('http') || avatarUrl.startsWith('/') ? (
+                  <img src={avatarUrl} alt="Assistant" className={styles.avatarImage} />
+                ) : (
+                  <span>{avatarUrl}</span>
+                )}
+              </div>
+            )}
             <div className={styles.bubble}>
               <div className={styles.text}>{msg.text}</div>
               
@@ -94,6 +105,13 @@ export const MessageList: React.FC<MessageListProps> = ({
 
         {isTyping && (
           <div className={`${styles.message} ${styles.assistant}`}>
+            <div className={styles.avatar}>
+              {avatarUrl.startsWith('http') || avatarUrl.startsWith('/') ? (
+                <img src={avatarUrl} alt="Assistant" className={styles.avatarImage} />
+              ) : (
+                <span>{avatarUrl}</span>
+              )}
+            </div>
             <div className={styles.bubble}>
               <div className={styles.typing}>
                 <span></span>

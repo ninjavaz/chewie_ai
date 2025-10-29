@@ -117,6 +117,7 @@ console.log(response.earnings); // { yearly: 124, monthly: 10.33, apr: 0.124 }
 | `onEvent` | `(event: ChewieEvent) => void` | `undefined` | Event callback for analytics |
 | `token` | `string` | `undefined` | Optional auth token |
 | `mock` | `boolean` | `false` | Enable mock mode (returns canned responses) |
+| `avatarUrl` | `string` | `'🤖'` | Custom avatar URL or emoji for assistant messages |
 
 ## 🔌 Backend API Contract
 
@@ -207,35 +208,126 @@ type AskRes = {
 
 ## 🎨 Theming & Customization
 
-Widget ships with Chewie AI branded dark theme. Override CSS variables to customize:
+The widget is fully customizable using CSS custom properties. Override variables in your CSS to match your brand:
+
+### Quick Example
 
 ```css
 :root {
-  /* Typography */
-  --chewie-font-heading;
-  --chewie-font-body;
-  --chewie-font-size-xs;
-  --chewie-font-size-sm;
-  --chewie-font-size-base;
-  --chewie-font-size-lg;
-  --chewie-font-size-xl;
-  --chewie-line-height-tight;
-  --chewie-line-height-normal;
+  /* Brand colors */
+  --chewie-button-primary-bg: #FF6B6B;
+  --chewie-button-primary-bg-hover: #EE5A52;
+  --chewie-message-user-bg: #4A90E2;
+  --chewie-followup-bg: #FFD93D;
+}
+```
 
-  /* Widget Dimensions */
-  --chewie-modal-width;
-  --chewie-modal-height;
-  --chewie-modal-bottom;
-  --chewie-modal-spacing;
-  --chewie-button-size;
-  --chewie-button-bottom;
-  --chewie-button-right;
-  --chewie-button-left;
-  --chewie-header-padding;
-  --chewie-icon-size;
+### Color Variables
 
-  /* Animations */
-  --chewie-animation-duration;
+#### Chat UI Colors
+```css
+/* Header */
+--chewie-chat-header-bg: #052346;
+
+/* Messages area */
+--chewie-chat-messages-bg: #E8EDF2;
+--chewie-message-user-bg: #3B5998;
+--chewie-message-user-text: #FFFFFF;
+--chewie-message-assistant-bg: #FFFFFF;
+--chewie-message-assistant-text: #2C3E50;
+--chewie-message-avatar-bg: #FFFFFF;
+
+/* Follow-up chips */
+--chewie-followup-bg: #F5C751;
+--chewie-followup-bg-hover: #F8D555;
+--chewie-followup-text: #2C3E50;
+
+/* Input area */
+--chewie-chat-input-bg: #FFFFFF;
+--chewie-chat-input-field-bg: #F5F7FA;
+--chewie-chat-input-border: #E0E5EB;
+--chewie-placeholder-text: #9CA3AF;
+
+/* Buttons */
+--chewie-button-primary-bg: #3B5998;
+--chewie-button-primary-bg-hover: #2F4779;
+--chewie-button-primary-text: #FFFFFF;
+```
+
+### Dimension Variables
+
+```css
+/* Avatar & Icons */
+--chewie-avatar-size: 40px;
+--chewie-avatar-radius: 8px;
+--chewie-icon-size: 20px;
+
+/* Messages */
+--chewie-message-padding: 14px 16px;
+--chewie-message-radius: 16px;
+--chewie-message-radius-corner: 4px;
+--chewie-message-font-size: 15px;
+--chewie-message-gap: 8px;
+
+/* Input */
+--chewie-input-padding: 10px 16px;
+--chewie-input-radius: 24px;
+--chewie-input-font-size: 15px;
+
+/* Buttons & Chips */
+--chewie-action-button-size: 36px;
+--chewie-followup-padding: 10px 16px;
+--chewie-followup-radius: 20px;
+--chewie-followup-font-size: 14px;
+
+/* Modal */
+--chewie-modal-width: 400px;
+--chewie-modal-height: 600px;
+--chewie-modal-bottom: 100px;
+--chewie-modal-spacing: 24px;
+
+/* Typography */
+--chewie-font-heading: 'Poppins', sans-serif;
+--chewie-font-body: 'Inter', sans-serif;
+
+/* Animations */
+--chewie-animation-duration: 0.3s;
+```
+
+### Example Themes
+
+#### Dark Theme
+```css
+:root {
+  --chewie-chat-header-bg: #1a1a1a;
+  --chewie-chat-messages-bg: #2d2d2d;
+  --chewie-chat-input-bg: #1a1a1a;
+  --chewie-chat-input-field-bg: #3d3d3d;
+  --chewie-message-assistant-bg: #3d3d3d;
+  --chewie-message-assistant-text: #ffffff;
+  --chewie-button-primary-bg: #0084ff;
+}
+```
+
+#### Compact Mode
+```css
+:root {
+  --chewie-modal-width: 350px;
+  --chewie-modal-height: 500px;
+  --chewie-avatar-size: 32px;
+  --chewie-message-font-size: 14px;
+  --chewie-action-button-size: 32px;
+}
+```
+
+### Using Your Brand Colors
+
+```css
+:root {
+  --chewie-button-primary-bg: var(--your-brand-primary);
+  --chewie-button-primary-bg-hover: var(--your-brand-primary-dark);
+  --chewie-message-user-bg: var(--your-brand-accent);
+  --chewie-followup-bg: var(--your-brand-secondary);
 }
 ```
 

@@ -63,8 +63,8 @@ export const InputBar: React.FC<InputBarProps> = ({ onSend, disabled, t }) => {
           aria-label={t.send}
         >
           <svg
-            width="20"
-            height="20"
+            width="14"
+            height="14"
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
@@ -78,7 +78,7 @@ export const InputBar: React.FC<InputBarProps> = ({ onSend, disabled, t }) => {
         </button>
       </div>
       <div className={styles.hint}>
-        {t.placeholder} • Shift+Enter {t.placeholder.includes('new line') ? '' : 'for new line'}
+       Shift+Enter for new line
       </div>
     </div>
   );

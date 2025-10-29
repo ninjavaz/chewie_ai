@@ -12,6 +12,7 @@ interface ChatWindowProps {
   placeholder?: string;
   welcomeMessage?: string;
   enableFeedback?: boolean;
+  avatarUrl: string;
 }
 
 export const ChatWindow: React.FC<ChatWindowProps> = ({
@@ -23,6 +24,7 @@ export const ChatWindow: React.FC<ChatWindowProps> = ({
   placeholder,
   welcomeMessage = "Hi! I'm ChewieAI, your DeFi assistant. How can I help you today?",
   enableFeedback = false,
+  avatarUrl,
 }) => {
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
@@ -38,7 +40,13 @@ export const ChatWindow: React.FC<ChatWindowProps> = ({
     <div className="chewie-chat-window">
       <div className="chewie-chat-window__header">
         <div className="chewie-chat-window__title">
-          <div className="chewie-chat-window__avatar">🤖</div>
+          <div className="chewie-chat-window__avatar">
+            {avatarUrl.startsWith('http') || avatarUrl.startsWith('/') ? (
+              <img src={avatarUrl} alt="ChewieAI" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+            ) : (
+              <span>{avatarUrl}</span>
+            )}
+          </div>
           <span>ChewieAI</span>
         </div>
         <button
@@ -65,7 +73,13 @@ export const ChatWindow: React.FC<ChatWindowProps> = ({
       <div className="chewie-chat-window__messages">
         {messages.length === 0 && (
           <div className="chewie-chat-window__welcome">
-            <div className="chewie-chat-window__welcome-avatar">🤖</div>
+            <div className="chewie-chat-window__welcome-avatar">
+              {avatarUrl.startsWith('http') || avatarUrl.startsWith('/') ? (
+                <img src={avatarUrl} alt="ChewieAI" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+              ) : (
+                <span>{avatarUrl}</span>
+              )}
+            </div>
             <div className="chewie-chat-window__welcome-text">
               {welcomeMessage}
             </div>

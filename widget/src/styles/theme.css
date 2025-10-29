@@ -53,6 +53,31 @@
   --chewie-color-text-secondary: var(--chewie-neutral-200);
   --chewie-color-text-inverse: var(--chewie-blue-900);
 
+  /* ============================================
+     CHAT UI COLORS (Customizable)
+     ============================================ */
+  --chewie-chat-header-bg: var(--chewie-blue-900);
+  --chewie-chat-messages-bg: #E8EDF2;
+  --chewie-chat-input-bg: #FFFFFF;
+  --chewie-chat-input-field-bg: #F5F7FA;
+  --chewie-chat-input-border: #E0E5EB;
+  
+  --chewie-message-user-bg: #3B5998;
+  --chewie-message-user-text: #FFFFFF;
+  --chewie-message-assistant-bg: #FFFFFF;
+  --chewie-message-assistant-text: #2C3E50;
+  --chewie-message-avatar-bg: #FFFFFF;
+  
+  --chewie-followup-bg: #F5C751;
+  --chewie-followup-bg-hover: #F8D555;
+  --chewie-followup-text: #2C3E50;
+  
+  --chewie-button-primary-bg: #3B5998;
+  --chewie-button-primary-bg-hover: #2F4779;
+  --chewie-button-primary-text: #FFFFFF;
+  
+  --chewie-placeholder-text: #9CA3AF;
+
   --chewie-color-border-subtle: rgba(255, 255, 255, 0.1);
   --chewie-color-border-primary: rgba(34, 83, 149, 0.3);
   --chewie-color-border-secondary: rgba(245, 199, 81, 0.3);
@@ -89,7 +114,7 @@
   /* ============================================
      SPACING
      ============================================ */
-  --chewie-space-container: 32px;
+  --chewie-space-container: 16px;
   --chewie-space-section: 120px;
   --chewie-space-card: 40px;
 
@@ -138,6 +163,26 @@
   
   /* Icons */
   --chewie-icon-size: 20px;
+  --chewie-avatar-size: 40px;
+  --chewie-avatar-radius: 8px;
+  
+  /* Messages */
+  --chewie-message-padding: 14px 16px;
+  --chewie-message-radius: 16px;
+  --chewie-message-radius-corner: 4px;
+  --chewie-message-font-size: 15px;
+  --chewie-message-gap: 8px;
+  
+  /* Input */
+  --chewie-input-padding: 8px;
+  --chewie-input-radius: 8px;
+  --chewie-input-font-size: 14px;
+  
+  /* Buttons */
+  --chewie-action-button-size: 36px;
+  --chewie-followup-padding: 10px 16px;
+  --chewie-followup-radius: 20px;
+  --chewie-followup-font-size: 14px;
 
   /* ============================================
      ANIMATIONS

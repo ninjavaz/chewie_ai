@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './FloatingButton.module.css';
 
 export type FloatingButtonProps = {
@@ -6,6 +6,7 @@ export type FloatingButtonProps = {
   onClick: () => void;
   position: 'bottom-right' | 'bottom-left';
   ariaLabel: string;
+  avatarUrl: string;
 };
 
 export const FloatingButton: React.FC<FloatingButtonProps> = ({
@@ -13,15 +14,44 @@ export const FloatingButton: React.FC<FloatingButtonProps> = ({
   onClick,
   position,
   ariaLabel,
+  avatarUrl,
 }) => {
+  const [showTooltip, setShowTooltip] = useState(false);
+  const [hasClicked, setHasClicked] = useState(false);
+
+  useEffect(() => {
+    // Show tooltip after 2 seconds if user hasn't clicked yet
+    if (!hasClicked) {
+      const timer = setTimeout(() => {
+        setShowTooltip(true);
+      }, 2000);
+
+      return () => {
+        clearTimeout(timer);
+      };
+    }
+  }, [hasClicked]);
+
+  const handleClick = () => {
+    setHasClicked(true);
+    setShowTooltip(false);
+    onClick();
+  };
+
   return (
-    <button
-      className={`${styles.button} ${styles[position]} ${isOpen ? styles.open : ''}`}
-      onClick={onClick}
-      aria-label={ariaLabel}
-      aria-expanded={isOpen}
-      type="button"
-    >
+    <>
+      {showTooltip && !hasClicked && (
+        <div className={`${styles.tooltip} ${position === 'bottom-right' ? styles.right : styles.left}`}>
+          💡 Confused? Let me explain!
+        </div>
+      )}
+      <button
+        className={`${styles.button} ${styles[position]} ${isOpen ? styles.open : ''}`}
+        onClick={handleClick}
+        aria-label={ariaLabel}
+        aria-expanded={isOpen}
+        type="button"
+      >
       {isOpen ? (
         <svg
           width="24"
@@ -37,19 +67,13 @@ export const FloatingButton: React.FC<FloatingButtonProps> = ({
           <line x1="6" y1="6" x2="18" y2="18" />
         </svg>
       ) : (
-        <svg
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
-        </svg>
+        avatarUrl.startsWith('http') || avatarUrl.startsWith('/') ? (
+          <img src={avatarUrl} alt="ChewieAI" className={styles.avatarImage} />
+        ) : (
+          <span className={styles.avatarEmoji}>{avatarUrl}</span>
+        )
       )}
-    </button>
+      </button>
+    </>
   );
 };

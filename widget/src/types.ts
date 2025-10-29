@@ -25,6 +25,8 @@ export interface ChewieWidgetProps {
   enableFeedback?: boolean;
   /** Custom icon URL */
   iconUrl?: string;
+  /** Custom avatar URL or emoji for assistant messages */
+  avatarUrl: string;
   /** Maximum chat history length */
   maxHistory?: number;
 }

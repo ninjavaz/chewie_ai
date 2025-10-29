@@ -76,6 +76,7 @@
     "vitest": "^1.0.4"
   },
   "dependencies": {
+    "clsx": "^2.1.0",
     "lucide-react": "^0.548.0"
   }
 }
