@@ -12,6 +12,9 @@ Production-ready AI chat widget for DeFi dApps. Built with TypeScript, React, an
 - 🎭 **Mock mode** - Local development without backend
 - ⚡ **Lightweight** - ~35KB min+gz (React is peer dependency)
 - 🔒 **Type-safe** - Full TypeScript support with exported types
+- 🖱️ **Draggable & Resizable** - Users can move and resize the chat window
+- 💡 **Smart Tooltip** - Engaging tooltip to encourage user interaction
+- 🎨 **Avatar Customization** - Use custom images or emojis for the assistant
 
 ## 📦 Installation
 
@@ -330,6 +333,43 @@ The widget is fully customizable using CSS custom properties. Override variables
   --chewie-followup-bg: var(--your-brand-secondary);
 }
 ```
+
+## 🎯 Interactive Features
+
+### Draggable & Resizable Modal
+
+The chat modal is fully interactive:
+- **Drag** - Click and hold the header to move the chat window anywhere on screen
+- **Resize** - Drag any edge or corner to resize the window
+  - Minimum width: 400px
+  - Maximum width: 800px
+  - Minimum height: 400px
+- **Maximize** - Click the maximize button in the header to toggle between default and full-height
+
+### Custom Avatar
+
+Customize the assistant avatar with an image URL or emoji:
+
+```tsx
+<ChewieChat
+  apiUrl="https://api.chewieai.com"
+  avatarUrl="https://your-cdn.com/avatar.png"  // Image URL
+  // or
+  avatarUrl="🤖"  // Emoji
+/>
+```
+
+The avatar appears in:
+- Floating button (when chat is closed)
+- Chat header
+- Assistant messages
+
+### Engagement Tooltip
+
+A smart tooltip appears after 2 seconds to encourage users to interact:
+- Shows: "💡 Confused? Let me explain!"
+- Dismisses permanently after first click
+- Fully customizable via CSS (see `--chewie-chat-messages-bg`)
 
 ## 📱 Accessibility
 
