@@ -112,7 +112,7 @@ async def ask_question(
     
     # Step 2: Check cache (Redis first for exact match, then PostgreSQL for semantic)
     settings = get_settings()
-    cached_response = await cache_service.get_from_redis(request.query)
+    cached_response = await cache_service.get_from_redis(request.query, dapp=dapp)
     if not cached_response:
         cached_response = await cache_service.get_cached_response(
             request.query,

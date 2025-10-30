@@ -156,7 +156,7 @@ class CacheService:
         await db.flush()
         
         # Also cache in Redis for fast exact lookups
-        await self._cache_in_redis(query, response_dict)
+        await self._cache_in_redis(query, response_dict, dapp)
         
         return cache_entry
     
@@ -176,14 +176,16 @@ class CacheService:
         self,
         query: str,
         response: Dict[str, Any],
+        dapp: str = "kamino",
         ttl_hours: int = 24,
     ) -> None:
         """Cache response in Redis for fast exact lookups."""
         try:
             redis = await get_redis()
             
-            # Create cache key from query hash
-            query_hash = hashlib.sha256(query.lower().encode()).hexdigest()
+            # Create cache key from query hash AND dapp to avoid cross-dapp cache collisions
+            cache_input = f"{dapp}:{query.lower()}"
+            query_hash = hashlib.sha256(cache_input.encode()).hexdigest()
             cache_key = f"query_cache:{query_hash}"
             
             # Store in Redis with TTL
@@ -196,12 +198,14 @@ class CacheService:
             # Redis failures shouldn't break the application
             print(f"Redis cache error: {e}")
     
-    async def get_from_redis(self, query: str) -> Optional[Dict[str, Any]]:
+    async def get_from_redis(self, query: str, dapp: str = "kamino") -> Optional[Dict[str, Any]]:
         """Get cached response from Redis (exact match)."""
         try:
             redis = await get_redis()
             
-            query_hash = hashlib.sha256(query.lower().encode()).hexdigest()
+            # Create cache key from query hash AND dapp to avoid cross-dapp cache collisions
+            cache_input = f"{dapp}:{query.lower()}"
+            query_hash = hashlib.sha256(cache_input.encode()).hexdigest()
             cache_key = f"query_cache:{query_hash}"
             
             cached = await redis.get(cache_key)
