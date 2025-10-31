@@ -1,0 +1,20 @@
+# docker-compose.override.yml.example
+# Copy to docker-compose.override.yml to customize ports
+
+version: '3.8'
+
+services:
+  # Override API port
+  api:
+    ports:
+      - "8001:8000"  # Change 8001 to your desired port
+  
+  # Override PostgreSQL port
+  postgres:
+    ports:
+      - "5433:5432"  # Change 5433 to your desired port
+  
+  # Override Redis port
+  redis:
+    ports:
+      - "6380:6379"  # Change 6380 to your desired port
