@@ -1,6 +1,6 @@
 {
   "name": "@chewieai/chat-widget",
-  "version": "0.2.0",
+  "version": "0.2.3",
   "description": "Production-ready chat widget for DeFi dApps - TypeScript, React, headless client",
   "type": "module",
   "sideEffects": false,
